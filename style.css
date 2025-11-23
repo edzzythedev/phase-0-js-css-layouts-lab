@@ -1,0 +1,119 @@
+/* --- Global Reset and Typography --- */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Light gray background */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #ffffff;
+    border-bottom: 2px solid #3b82f6; /* Blue border for visual separation */
+}
+
+h1 {
+    color: #1f2937;
+    margin-bottom: 0.5em;
+}
+
+/* --- 1. Flex Container Styling (.cat-container) --- */
+/* This is the parent element that controls the layout of the cat cards. */
+.cat-container {
+    /* Required: Turns the container into a flex container */
+    display: flex;
+    /* Required: Allows cards to wrap to the next line when the screen is too narrow */
+    flex-wrap: wrap;
+    /* Required: Distributes cards evenly with space on the left and right */
+    justify-content: space-around;
+    /* Required: Space inside the container */
+    padding: 2em;
+}
+
+/* --- 2. Flex Item (Card) Styling (.cat-breed) --- */
+/* These are the individual cat breed cards. */
+.cat-breed {
+    /* Required: The core of the responsive layout!
+       - flex-grow (1), flex-shrink (1), flex-basis (300px) */
+    flex: 1 1 300px;
+    
+    /* Required Visual Styles */
+    margin: 1em;
+    padding: 1em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    background-color: #ffffff;
+    
+    /* Required: Prepare for the hover scaling effect */
+    transition: transform 0.3s;
+}
+
+/* --- 3. Card Hover Effect --- */
+/* Required: Makes the card appear interactive and lift up when the user hovers over it */
+.cat-breed:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* --- 4. Internal Card Element Styling --- */
+/* Images inside the cards */
+.cat-breed img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* Softens the image corners */
+    margin-bottom: 1em;
+}
+
+/* Headings inside the cards */
+.cat-breed h3 {
+    margin: 0.5em 0;
+    color: #3b82f6;
+}
+
+/* Paragraphs inside the cards */
+.cat-breed p {
+    margin: 0.5em 0 1em;
+    color: #4b5563;
+}
+
+/* Styling the "Learn More" links for visual appeal */
+.cat-breed a {
+    display: inline-block;
+    background-color: #3b82f6;
+    color: white;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.cat-breed a:hover {
+    background-color: #2563eb;
+}
+
+/* --- 5. Media Queries for Responsiveness (Small Screens) --- */
+/* Styles applied when the screen width is 768px or less (e.g., mobile phones) */
+@media (max-width: 768px) {
+    
+    /* Change the container to a single vertical column */
+    .cat-container {
+        /* Required: Stack items vertically instead of horizontally */
+        flex-direction: column;
+        /* Required: Center the column of items horizontally */
+        align-items: center;
+        padding: 1em; 
+    }
+    
+    /* Make each card take up the full available width */
+    .cat-breed {
+        /* Required: Set flex-basis to 100% to force full width */
+        flex: 1 1 100%;
+        /* Required: Ensure the card does not exceed the container width */
+        max-width: 90%; 
+        margin-bottom: 2em; 
+    }
+}
